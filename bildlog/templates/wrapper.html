@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang=en>
+<head>
+    <title>{% block title %}Place Holder Text{% endblock %}</title>
+    <script src="{% static 'js/vendor/custom.modernizr.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/foundation.css' %}"/>
+</head>
+<body>
+    {% comment %}
+    (User logged in)
+        (left side)
+            Bildlog (link to index)
+        (right side)
+            Bilds
+                My Bilds (Goes to Bild management page)
+                Bilds I Follow
+            My Account (gravatar)
+                (All of these are sections of a 'My Account Panel')
+                Profile
+                Friends
+                Settings
+                Sign Out
+    (Unknown User)
+        (left side)
+            Bildlog (link to index)
+            Features
+            About
+            FAQ
+            (Once I have content, add in a 'Browse' option)
+        (right side)
+            Login
+                Take up the entire space and have a "Username" and "Password" text field
+            Sign Up (also mimicked on the bottom page)
+                Takes you to a page where you can sign up with different services
+    {% endcomment %}
+    <!-- HEADER BEGINS -->
+    <nav class="top-bar">
+        <ul class="title-area">
+            <!-- Title Area -->
+            <li class="name">
+                <h1><a href="{% url 'bild.views.index' %}">Bildlog </a></h1>
+            </li>
+            <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        </ul>
+        <section class="top-bar-section">
+            <!-- Left Nav Section -->
+            <ul class="left">
+                <li><a href="#">Features</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+            <!-- Right Nav Section -->
+            <ul class="right">
+                <a href="#" data-dropdown="drop1" class="button">Login</a>
+                <div id="drop1" class="f-dropdown content small-medium" data-dropdown-content>
+                    <form>
+                        <div class="row">
+                            <div class="small-12">
+                                <div class="row">
+                                    <div class="small-3 columns">
+                                        <label for="right-label" class="right inline"><strong>Email</strong></label>
+                                    </div>
+                                    <div class="row collapse">
+                                        <div class="small-9 columns">
+                                            <input type="text" id="right-label" placeholder="joe.shmoe@huzzah.com">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="small-3 columns">
+                                        <label for="right-label" class="right inline"><strong>Password</strong></label>
+                                    </div>
+                                    <div class="row collapse">
+                                        <div class="small-6 columns">
+                                            <input type="password" id="right-label" placeholder="********************">
+                                        </div>
+                                        <div class="small-3 columns">
+                                            <input type="submit" class="button prefix">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="small-4 columns"></div>
+                <li class="divider show-for-small"></li>
+                <a href="{% url 'bildloguser.views.signup' %}" class="button">Sign Up</a>
+            </ul>
+        </section>
+    </nav>
+    <!-- HEADER END -->
+    
+    <!-- CONTENT -->
+    {% block content %}
+    
+    {% endblock %}
+    <!-- END CONTENT -->
+    
+    <!-- ERECTIN' SCRIPTS HERE! -->
+    <!-- Check for Zepto support, load jQuery if necessary -->
+    <script>
+    document.write('<script src=' +
+    ('__proto__' in {} ? '{% static 'js/vendor/zepto.js' %}'  : '{% static 'js/vendor/jquery.js' %}') + '><\/script>')
+    </script>
+    <!-- Gotta do this like a plebe cuz the min version doesnt wanna play nice -->
+    <script src="{% static 'js/foundation/foundation.js' %}"></script>
+    <script src="{% static 'js/foundation/foundation.alerts.js' %}"></script>
+    <script src="{% static 'js/foundation/foundation.clearing.js' %}"></script>
+    <script src="{% static 'js/foundation/foundation.cookie.js' %}"></script>
+    <script src="{% static 'js/foundation/foundation.dropdown.js' %}"></script>
+    <script src="{% static 'js/foundation/foundation.forms.js' %}"></script>
+    <script src="{% static 'js/foundation/foundation.joyride.js' %}"></script>
+    <script src="{% static 'js/foundation/foundation.magellan.js' %}"></script>
+    <script src="{% static 'js/foundation/foundation.orbit.js' %}"></script>
+    <script src="{% static 'js/foundation/foundation.placeholder.js' %}"></script>
+    <script src="{% static 'js/foundation/foundation.reveal.js' %}"></script>
+    <script src="{% static 'js/foundation/foundation.section.js' %}"></script>
+    <script src="{% static 'js/foundation/foundation.tooltips.js' %}"></script>
+    <script src="{% static 'js/foundation/foundation.topbar.js' %}"></script>
+    <script src="{% static 'js/foundation/foundation.interchange.js' %}"></script>
+    <!-- ACTIVATE! -->
+    <script>
+        $(document).foundation();
+    </script>
+</body>
+</html>
