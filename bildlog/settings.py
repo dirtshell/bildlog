@@ -132,6 +132,7 @@ INSTALLED_APPS = (
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.RemoteUserBackend',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -162,5 +163,3 @@ LOGGING = {
         },
     }
 }
-
-AUTH_USER_MODEL = 'bildloguser.BildLogUser' # For the custom user model
