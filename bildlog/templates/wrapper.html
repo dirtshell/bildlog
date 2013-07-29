@@ -35,62 +35,94 @@
                 Takes you to a page where you can sign up with different services
     {% endcomment %}
     <!-- HEADER BEGINS -->
-    <nav class="top-bar">
-        <ul class="title-area">
-            <!-- Title Area -->
-            <li class="name">
-                <h1><a href="{% url 'bild.views.index' %}">Bildlog </a></h1>
-            </li>
-            <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-        </ul>
-        <section class="top-bar-section">
-            <!-- Left Nav Section -->
-            <ul class="left">
-                <li><a href="#">Features</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">FAQ</a></li>
+    {% if user.is_authenticated %}
+        <nav class="top-bar">
+            <ul class="title-area">
+                <!-- Title Area -->
+                <li class="name">
+                    <h1><a href="{% url 'bild.views.index' %}">Bildlog </a></h1>
+                </li>
+                <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+                <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
             </ul>
-            <!-- Right Nav Section -->
-            <ul class="right">
-                <a href="#" data-dropdown="drop1" class="button">Login</a>
-                <div id="drop1" class="f-dropdown content small-medium" data-dropdown-content>
-                    <form>
-                        <div class="row">
-                            <div class="small-12">
-                                <div class="row">
-                                    <div class="small-3 columns">
-                                        <label for="right-label" class="right inline"><strong>Email</strong></label>
-                                    </div>
-                                    <div class="row collapse">
-                                        <div class="small-9 columns">
-                                            <input type="text" id="right-label" placeholder="joe.shmoe@huzzah.com">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="small-3 columns">
-                                        <label for="right-label" class="right inline"><strong>Password</strong></label>
-                                    </div>
-                                    <div class="row collapse">
-                                        <div class="small-6 columns">
-                                            <input type="password" id="right-label" placeholder="********************">
-                                        </div>
+            <section class="top-bar-section">
+                <!-- Right Nav Section -->
+                <ul class="right">
+                    <li class="has-dropdown"><a href="#">Bilds</a>
+                        <ul class="dropdown">
+                            <li><a href="#">My Bilds</a></li>
+                            <li><a href="#">Bilds I Follow</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown"><a href="#">{{ user.username }}</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Friends</a></li>
+                            <li><a href="#">Settings</a></li>
+                            <li><a href="#">Sign Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+    {% else %}
+        <nav class="top-bar">
+            <ul class="title-area">
+                <!-- Title Area -->
+                <li class="name">
+                    <h1><a href="{% url 'bild.views.index' %}">Bildlog </a></h1>
+                </li>
+                <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+                <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+            </ul>
+            <section class="top-bar-section">
+               <!-- Left Nav Section -->
+                <ul class="left">
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+                <!-- Right Nav Section -->
+                <ul class="right">
+                    <a href="#" data-dropdown="drop1" class="button">Login</a>
+                    <div id="drop1" class="f-dropdown content small-medium" data-dropdown-content>
+                        <form>
+                            <div class="row">
+                                <div class="small-12">
+                                    <div class="row">
                                         <div class="small-3 columns">
-                                            <input type="submit" class="button prefix">
+                                            <label for="right-label" class="right inline"><strong>Email</strong></label>
+                                        </div>
+                                        <div class="row collapse">
+                                            <div class="small-9 columns">
+                                                <input type="text" id="right-label" placeholder="joe.shmoe@huzzah.com">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="small-3 columns">
+                                            <label for="right-label" class="right inline"><strong>Password</strong></label>
+                                        </div>
+                                        <div class="row collapse">
+                                            <div class="small-6 columns">
+                                                <input type="password" id="right-label" placeholder="********************">
+                                            </div>
+                                            <div class="small-3 columns">
+                                                <input type="submit" class="button prefix">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="small-4 columns"></div>
-                <li class="divider show-for-small"></li>
-                <a href="{% url 'bildloguser.views.signup' %}" class="button">Sign Up</a>
-            </ul>
-        </section>
-    </nav>
+                        </form>
+                    </div>
+                    <div class="small-4 columns"></div>
+                    <li class="divider show-for-small"></li>
+                    <a href="{% url 'bildloguser.views.signup' %}" class="button">Sign Up</a>
+                </ul>
+            </section>
+        </nav>    
+    {% endif %}
     <!-- HEADER END -->
     
     <!-- CONTENT -->

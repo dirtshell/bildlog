@@ -23,6 +23,8 @@ def signup(request):
                 password,
             )
             user = authenticate(username=request.POST['username'], password=request.POST['password1'])
+            bu = BildLogUser(user=user)
+            bu.save()
             if user is not None: # login and send them to the index
                 login(request, user) 
                 return HttpResponseRedirect('/') 
