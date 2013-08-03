@@ -59,7 +59,7 @@
                             <li><a href="#">Profile</a></li>
                             <li><a href="#">Friends</a></li>
                             <li><a href="#">Settings</a></li>
-                            <li><a href="#">Sign Out</a></li>
+                            <li><a href="{% url 'logout' %}">Sign Out</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -85,27 +85,28 @@
                 <!-- Right Nav Section -->
                 <ul class="right">
                     <a href="#" data-dropdown="drop1" class="button">Login</a>
-                    <div id="drop1" class="f-dropdown content small-medium" data-dropdown-content>
-                        <form>
+                    <div id="drop1" class="f-dropdown content small-medium {% if login_error %}open{% endif %}" data-dropdown-content>
+                        <form method="POST" action="{% url 'login' %}">
+                            {% csrf_token %}
                             <div class="row">
                                 <div class="small-12">
                                     <div class="row">
                                         <div class="small-3 columns">
-                                            <label for="right-label" class="right inline"><strong>Email</strong></label>
+                                            <label for="user_email" class="right inline"><strong>Username</strong></label>
                                         </div>
                                         <div class="row collapse">
                                             <div class="small-9 columns">
-                                                <input type="text" id="right-label" placeholder="joe.shmoe@huzzah.com">
+                                                <input type="text" id="user_username" name="user_username" placeholder="joeshmoe69">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="small-3 columns">
-                                            <label for="right-label" class="right inline"><strong>Password</strong></label>
+                                            <label for="user_password" class="right inline"><strong>Password</strong></label>
                                         </div>
                                         <div class="row collapse">
                                             <div class="small-6 columns">
-                                                <input type="password" id="right-label" placeholder="********************">
+                                                <input type="password" id="user_password" name="user_password" placeholder="********************">
                                             </div>
                                             <div class="small-3 columns">
                                                 <input type="submit" class="button prefix">
@@ -115,6 +116,9 @@
                                 </div>
                             </div>
                         </form>
+                        {% if login_error %}
+                        <div class="alert-box alert">{{ login_error }}</div>
+                        {% endif %}
                     </div>
                     <div class="small-4 columns"></div>
                     <li class="divider show-for-small"></li>

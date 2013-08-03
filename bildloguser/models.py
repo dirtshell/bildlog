@@ -11,6 +11,7 @@ class BildLogUser(models.Model):
     
 class BildLogUserForm(forms.Form):
     username                    =           forms.CharField(max_length=30, required=True)
-    email                       =           forms.EmailField(max_length=150, required=True)
+    email1                      =           forms.EmailField(max_length=150, required=True)
+    email2                      =           forms.EmailField(max_length=150, required=True)
     password1                   =           forms.CharField(label='Password', widget=forms.PasswordInput(), max_length=30, required=True)
     password2                   =           forms.CharField(label='Password confirmation', widget=forms.PasswordInput(), max_length=30, required=True)

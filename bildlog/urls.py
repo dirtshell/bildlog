@@ -15,6 +15,8 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     #url(r'^admin/', include(admin.site.urls)),
     
-    url(r'^$', 'bild.views.index'),                    # The index
-    url(r'^signup/$', 'bildloguser.views.signup'),            # The signup page
+    url(r'^$', 'bild.views.index', name="index"),                    # The index
+    url(r'^signup/$', 'bildloguser.views.signup', name="signup"),            # The signup page
+    url(r'^login/$', 'bildloguser.views.login_view', name="login"),    # The login page
+    url(r'^logout/$', 'bildloguser.views.logout_view', name="logout"),  # The logout page
 )
