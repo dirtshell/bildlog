@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse
 from django.template import RequestContext, loader
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
-from bild.models import *
+from bildcontrols.models import *
 from bildloguser.models import *
 
 # Register a user and login them in
@@ -28,7 +28,7 @@ def signup(request):
                 return HttpResponseRedirect('/') 
             else:
                 return render(request, 'signup.html', {
-                    'server_error' : "A server error occured. Please try again"
+                    'server_error' : "A server error occured. Please try again",
                 })
     else:
         form = BildLogUserForm() # An unbound form
@@ -51,9 +51,16 @@ def login_view(request):
             return HttpResponseRedirect('/')
         else:
             return render(request, 'index.html', {
-                'login_error' : "Login failed"
+                'login_error' : "Login failed",
             })  
     else:
         return render(request, 'index.html', {
-            'login_error' : "Login failed"
-        })  
+            'login_error' : "Login failed",
+        })
+    
+# View a user's account
+# If the user viewing the page is the user of the page, then link to bildcontrols and user settings
+def view_user_profile(request, username):
+    return render(request, 'userprofile.html', {
+        'username' : username,
+    })

@@ -122,7 +122,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'taggit',
-    'bild',
+    'bildcontrols',
     'bildloguser',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
