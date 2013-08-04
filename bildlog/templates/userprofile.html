@@ -1,0 +1,43 @@
+{% extends "wrapper.html" %}
+{% block title %} {{ username }}'s Profile {% endblock %}
+{% block content %}
+{% comment %}
+    What users wanna see about other users:
+        - User image
+        - Recent comments
+        - Full githtub integration
+            * Show their repos
+            * Show their commit history (tie this in to their recent activity log)
+        - List of all their Bilds
+        - List of recent Logs
+        - Recent images
+        - Users self-written description
+        - Bilds the user follows
+            * A number under profile would be nice
+        - Number of followers
+        - Coding languages (pulled from Github)
+        - Joined date
+        - Last active
+        - Rep (tentative)
+            * Bild like: 20
+            * Log like: 5
+            * Code like: 5
+            * Comment like: 1
+        - Badges (to be implemented)
+            * Good Samaritan (been credited with helping on x number of Bilds)
+            * Happy Guy (like alot of content)
+            * Chain Logger (Updated a single Bild 5 times in day)
+            * Assisted a specific user in 2+ Bilds
+            * Wrote a 500+ char log
+            * 3+ Bilds with 3+ logs
+            * Lots of photos on a Bild
+            * Lots of lines of code
+            * Lots of followers
+            * Lots of comments
+            * Following a lot of Bilds
+            * Lots of likes on your Bild
+{% endcomment %}
+<div class="row">
+    {% comment %} Sidebar with basic user profile, from top to bottom: image, short description, join date, last active, Rep-followers-following, and pimp section at the bottom{% endcomment %}
+</div>
+{% endblock %}
