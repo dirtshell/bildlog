@@ -9,6 +9,9 @@
             * Show their repos
             * Show their commit history (tie this in to their recent activity log)
         - List of all their Bilds
+            * These would like good tiled
+            * Each tile links to the Bild page
+            * Each tile should have a description
         - List of recent Logs
         - Recent images
         - Users self-written description
@@ -26,7 +29,7 @@
         - Badges (to be implemented)
             * Good Samaritan (been credited with helping on x number of Bilds)
             * Happy Guy (like alot of content)
-            * Chain Logger (Updated a single Bild 5 times in day)
+            * Chain Saw Operator (Updated a single Bild 5 times in day (logger, get it))
             * Assisted a specific user in 2+ Bilds
             * Wrote a 500+ char log
             * 3+ Bilds with 3+ logs
@@ -38,13 +41,17 @@
             * Lots of likes on your Bild
 {% endcomment %}
 <div class="row">
-    {% comment %} Sidebar with basic user profile, from top to bottom: image, short description, join date, last active, Rep-followers-following, and pimp section at the bottom{% endcomment %}
     <div class="row">
+        {% comment %} Sidebar with basic user profile, from top to bottom: image, short description, join date, last active, Rep-followers-following, and pimp section at the bottom {% endcomment %}
         <div class="large-3 columns grid-outline">
             <img src="http://guidesmedia.ign.com/guides/059687/images/blackwhite/pokemans_054.gif"/>
-            <p> I really like computers and stuff. This is my short description about myself. Hopefully this looks decent on the dev site. </p>
-            <div class="row"> Join Date: 05/24/1996 </div></br>
-            <div class="row"> Last Active: Yesterday </div></br>
+            <div class="row"> Languages: HTML, CSS, Ruby </div> <!-- This should have the icons instead of the name of the service -->
+            <div class="row"> Contact: dirt@shell.com </div> <!-- This should have the icons instead of the name of the service -->
+            <div class="row"> Country: United States </div> <!-- This should have the icons instead of the name of the service -->
+            <div class="row"> Personal Site: www.dirtshell.com </div> <!-- This should have the icons instead of the name of the service -->
+            <div class="row"> Job: Software Engineer </div> <!-- This should have the icons instead of the name of the service -->
+            <div class="row"> GitHub: dirtshell </div> <!-- This should have the icons instead of the name of the service -->
+            <div class="row"> Join Date: 05/24/1996 </div>
             <div class="row">
                 <!-- Rep -->
                 <div class="large-4 columns grid-outline">
@@ -58,11 +65,77 @@
                 <div class="large-4 columns grid-outline">
                     <span style="display: inline-block; vertical-align: middle; line-height: normal;">42</span>
                 </div>
-            </div></br>
-            <div class="row"> GitHub: dirtshell </div></br> <!-- This should have the icons instead of the name of the service -->
+            </div>
         </div>
+        {% comment %} The body of the user profile, showing their bilds, logs, contributions, and activity {% endcomment %}
         <div class="large-9 columns grid-outline">
-            <p> MORE STUFF HERE</p>
+            <div class="section-container auto" data-section>
+                <section class="active">
+                    <p class="title" data-section-title><a href="#panel1">Bilds</a></p>
+                    <div class="content" data-section-content>
+                        <div class="row">
+                            <div class="large-3 columns grid-outline">
+                                <img src='http://placehold.it/300x300' alt='Placeholder' />
+                                <h6> My Cool Bild </h6>
+                            </div>
+                            <div class="large-3 columns grid-outline">
+                                <img src='http://placehold.it/300x300' alt='Placeholder' />
+                                <h6> My Cool Bild </h6>
+                            </div>
+                            <div class="large-3 columns grid-outline">
+                                <img src='http://placehold.it/300x300' alt='Placeholder' />
+                                <h6> My Cool Bild </h6>
+                            </div>
+                            <div class="large-3 columns grid-outline">
+                                <img src='http://placehold.it/300x300' alt='Placeholder' />
+                                <h6> My Cool Bild </h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-3 columns grid-outline">
+                                <img src='http://placehold.it/300x300' alt='Placeholder' />
+                                <h6> My Cool Bild </h6>
+                            </div>
+                            <div class="large-3 columns grid-outline">
+                                <img src='http://placehold.it/300x300' alt='Placeholder' />
+                                <h6> My Cool Bild </h6>
+                            </div>
+                            <div class="large-3 columns grid-outline">
+                                <img src='http://placehold.it/300x300' alt='Placeholder' />
+                                <h6> My Cool Bild </h6>
+                            </div>
+                            <div class="large-3 columns grid-outline">
+                                <img src='http://placehold.it/300x300' alt='Placeholder' />
+                                <h6> My Cool Bild </h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-3 columns grid-outline">
+                                <img src='http://placehold.it/300x300' alt='Placeholder' />
+                                <h6> My Cool Bild </h6>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <p class="title" data-section-title><a href="#panel2">Logs</a></p>
+                    <div class="content" data-section-content>
+                        <p>Logs will go here</p>
+                    </div>
+                </section>
+                <section>
+                    <p class="title" data-section-title><a href="#panel2">Contributions</a></p>
+                    <div class="content" data-section-content>
+                        <p>This will show code and be linked in to github</p>
+                    </div>
+                </section>
+                <section>
+                    <p class="title" data-section-title><a href="#panel2">Activity</a></p>
+                    <div class="content" data-section-content>
+                        <p>A feed listing relevant info to the user</p>
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
 </div>
