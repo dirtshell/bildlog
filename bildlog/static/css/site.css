@@ -4,3 +4,52 @@
     border-color: #000000; 
     border-width: 3px;
 }
+
+/* Allows multiple heads to be on one line */
+/* eg: <h1>Title<span>Date</span></h1>     */
+.date {
+    line-height: 1.4;
+    color: #6f6f6f;
+    font-weight: 300;
+    margin-left:0.2em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    font-size: 0.9em;
+}
+
+/* Creating titles using headers. Have to do it like this because the end
+of headers automatically do a newline */
+.h1-title, .h2-title, .h3-title, .h4-title, .h5-title, .h6-title {
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  color: #222222;
+  text-rendering: optimizeLegibility;
+  margin-top: 0.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.2125em; 
+}
+
+.h1-title {
+  font-size: 2.125em; 
+ }
+
+.h2-title {
+  font-size: 1.6875em; 
+}
+
+.h3-title {
+  font-size: 1.375em; 
+}
+
+.h4-title {
+  font-size: 1.125em; 
+}
+
+.h5-title {
+  font-size: 1.125em; 
+}
+
+.h6-title {
+  font-size: 1em; 
+}
