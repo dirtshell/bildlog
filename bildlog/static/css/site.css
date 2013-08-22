@@ -1,0 +1,6 @@
+/* Used in dev to visualize the grid */
+.grid-outline {
+    border-style: dashed; 
+    border-color: #000000; 
+    border-width: 3px;
+}

@@ -20,5 +20,5 @@ urlpatterns = patterns('',
     url(r'^signup/$', 'bildloguser.views.signup', name="signup"),            # The signup page
     url(r'^login/$', 'bildloguser.views.login_view', name="login"),    # The login page
     url(r'^logout/$', 'bildloguser.views.logout_view', name="logout"),  # The logout page
-    url(r'^user/(?P<username>\S{,30})/$', 'bildloguser.views.view_user_profile', name="view_user_profile"), # View a users profile (usernames have a max length of 30 chars)
+    url(r'^(?P<username>\S{,30})/$', 'bildloguser.views.view_user_profile', name="view_user_profile"), # View a users profile (usernames have a max length of 30 chars)
 )

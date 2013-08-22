@@ -11,11 +11,11 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'bildlog_data',                      # Or path to database file if using sqlite3.
-        'USER': 'root',
-        'PASSWORD': 'biddenly',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'USER': 'bildlog',
+        'PASSWORD': 'Dos2cpp!1996',
+        'HOST': 'localhost',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
     }
 }
@@ -71,7 +71,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/home/bildlog/bildlog/bildlog/static',
+    '/home/dirt1996/djangoapp/bildlog/bildlog/bildlog/static',
 )
 
 # List of finder classes that know how to find static files in
@@ -111,7 +111,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/home/bildlog/bildlog/bildlog/templates',
+    '/home/dirt1996/djangoapp/bildlog/bildlog/bildlog/templates',
 )
 
 INSTALLED_APPS = (
