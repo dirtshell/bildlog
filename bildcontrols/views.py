@@ -6,3 +6,6 @@ from bildcontrols.models import *
 
 def index(request):
     return render(request, 'index.html')
+
+def createBild(request):
+    return render(request, 'create.html')
