@@ -2,26 +2,27 @@
 {% block title %} Create a Bild {% endblock %}
 {% block content %}
 <form>
-    <div class="row">
-        <div class="large-12 columns">
-            <label>Title</label>
-            <input type="text">
+    <form method="POST" action="{% url 'createBild' %}">
+        <div class="row">
+            <div class="large-12 columns">
+                <label>Title</label>
+                <input type="text">
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="large-12 columns">
-            <label>Content</label>
-            <textarea></textarea>
+        <div class="row">
+            <div class="large-12 columns">
+                <label>Content</label>
+                <textarea></textarea>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="large-8 columns">
-            <label>Tags</label>
-            <input type="text">
+        <div class="row">
+            <div class="large-8 columns">
+                <label>Tags</label>
+                <input type="text">
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <input style="margin-left: 15px" type="submit">
-    </div>
-</form>
+        <div class="row">
+            <input style="margin-left: 15px" type="submit">
+        </div>
+    </form>
 {% endblock %}

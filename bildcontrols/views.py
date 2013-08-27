@@ -8,4 +8,7 @@ def index(request):
     return render(request, 'index.html')
 
 def createBild(request):
-    return render(request, 'create.html')
+    return HttpResponse("You submitted a Bild")
+    
+def createLog(request):
+    return HttpResponse("You submitted a log")
