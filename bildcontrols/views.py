@@ -8,7 +8,15 @@ def index(request):
     return render(request, 'index.html')
 
 def createBild(request):
-    return HttpResponse("You submitted a Bild")
+    return render(request, 'createbild.html')
     
 def createLog(request):
+    return render(request, 'createlog.html')
+
+def submitBild(request):
+    # Handle the form here
+    return HttpResponse("You submitted a Bild")
+    
+def submitLog(request):
+    # Handle the form here
     return HttpResponse("You submitted a log")
