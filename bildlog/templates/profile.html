@@ -1,0 +1,181 @@
+{% extends "wrapper.html" %}
+{% block title %} {{ username }}'s Profile {% endblock %}
+{% block content %}
+{% comment %}
+    What users wanna see about other users:
+        - User image
+        - Recent comments
+        - Full githtub integration
+            * Show their repos
+            * Show their commit history (tie this in to their recent activity log)
+        - List of all their Bilds
+            * These would like good tiled
+            * Each tile links to the Bild page
+            * Each tile should have a description
+        - List of recent Logs
+        - Recent images
+        - Users self-written description
+        - Bilds the user follows
+            * A number under profile would be nice
+        - Number of followers
+        - Coding languages (pulled from Github)
+        - Joined date
+        - Last active
+        - Rep (tentative)
+            * Bild like: 20
+            * Log like: 5
+            * Code like: 5
+            * Comment like: 1
+        - Badges (to be implemented)
+            * Good Samaritan (been credited with helping on x number of Bilds)
+            * Happy Guy (like alot of content)
+            * Chain Saw Operator (Updated a single Bild 5 times in day (logger, get it))
+            * Assisted a specific user in 2+ Bilds
+            * Wrote a 500+ char log
+            * 3+ Bilds with 3+ logs
+            * Lots of photos on a Bild
+            * Lots of lines of code
+            * Lots of followers
+            * Lots of comments
+            * Following a lot of Bilds
+            * Lots of likes on your Bild
+{% endcomment %}
+<div class="row">
+    <div class="row">
+        {% comment %} Sidebar with basic user profile, from top to bottom: image, short description, join date, last active, Rep-followers-following, and pimp section at the bottom {% endcomment %}
+        <div class="large-3 columns grid-outline">
+            <img src="http://guidesmedia.ign.com/guides/059687/images/blackwhite/pokemans_054.gif"/>
+            <div class="row"> Languages: HTML, CSS, Ruby </div> <!-- This should have the icons instead of the name of the service -->
+            <div class="row"> Contact: dirt@shell.com </div> <!-- This should have the icons instead of the name of the service -->
+            <div class="row"> Country: United States </div> <!-- This should have the icons instead of the name of the service -->
+            <div class="row"> Personal Site: www.dirtshell.com </div> <!-- This should have the icons instead of the name of the service -->
+            <div class="row"> Job: Software Engineer </div> <!-- This should have the icons instead of the name of the service -->
+            <div class="row"> GitHub: dirtshell </div> <!-- This should have the icons instead of the name of the service -->
+            <div class="row"> Join Date: 05/24/1996 </div>
+            <div class="row">
+                <!-- Rep -->
+                <div class="large-4 columns grid-outline">
+                    <span style="display: inline-block; vertical-align: middle; line-height: normal;">69</span>
+                </div>
+                <!-- Followers -->
+                <div class="large-4 columns grid-outline">
+                    <span style="display: inline-block; vertical-align: middle; line-height: normal;">420</span>
+                </div>
+                <!-- Following -->
+                <div class="large-4 columns grid-outline">
+                    <span style="display: inline-block; vertical-align: middle; line-height: normal;">42</span>
+                </div>
+            </div>
+        </div>
+        {% comment %} The body of the user profile, showing their bilds, logs, contributions, and activity {% endcomment %}
+        <div class="large-9 columns grid-outline">
+            <div class="section-container auto" data-section>
+                <section class="active">
+                    <p class="title" data-section-title><a href="#panel1">Bilds</a></p>
+                    <div class="content" data-section-content>
+                        <div class="row">
+                            <div class="large-3 columns grid-outline">
+                                <img src='http://placehold.it/300x300' alt='Placeholder' />
+                                <h6> My Cool Bild </h6>
+                            </div>
+                            <div class="large-3 columns grid-outline">
+                                <img src='http://placehold.it/300x300' alt='Placeholder' />
+                                <h6> My Cool Bild </h6>
+                            </div>
+                            <div class="large-3 columns grid-outline">
+                                <img src='http://placehold.it/300x300' alt='Placeholder' />
+                                <h6> My Cool Bild </h6>
+                            </div>
+                            <div class="large-3 columns grid-outline">
+                                <img src='http://placehold.it/300x300' alt='Placeholder' />
+                                <h6> My Cool Bild </h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-3 columns grid-outline">
+                                <img src='http://placehold.it/300x300' alt='Placeholder' />
+                                <h6> My Cool Bild </h6>
+                            </div>
+                            <div class="large-3 columns grid-outline">
+                                <img src='http://placehold.it/300x300' alt='Placeholder' />
+                                <h6> My Cool Bild </h6>
+                            </div>
+                            <div class="large-3 columns grid-outline">
+                                <img src='http://placehold.it/300x300' alt='Placeholder' />
+                                <h6> My Cool Bild </h6>
+                            </div>
+                            <div class="large-3 columns grid-outline">
+                                <img src='http://placehold.it/300x300' alt='Placeholder' />
+                                <h6> My Cool Bild </h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-3 columns grid-outline">
+                                <img src='http://placehold.it/300x300' alt='Placeholder' />
+                                <h6> My Cool Bild </h6>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    {# Show them in chronological order for now, linking to the Bild page for the Bild associated with each Log. Allow people to continue reading after the 500 or so words on the actual Logs page #}
+                    <p class="title" data-section-title><a href="#panel2">Logs</a></p>
+                    <div class="content">
+                        <a class="h5-title" href="#">The Bild: </a><span class="h5-title">This Log's Title</span><span class="date">5/16/78</span></br>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut 
+                        laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation 
+                        ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in 
+                        hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero
+                        eros et accumsan</p>
+                        <hr>
+                        <a class="h5-title" href="#">Another Bild: </a><span class="h5-title">This Log's Title</span><span class="date">5/10/78</span></br>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut 
+                        laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation 
+                        ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in 
+                        hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero
+                        eros et accumsan vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero
+                        eros et accumsan vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero
+                        eros et accumsan ... <a href="#">Read More</a></p>
+                        <hr>
+                        <a class="h5-title" href="#">Another Bild: </a><span class="h5-title">This Log's Title</span><span class="date">5/8/78</span></br>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut 
+                        laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation 
+                        ullamcorper</p>
+                        <hr>
+                        <a class="h5-title" href="#">The Bild: </a><span class="h5-title">This Log's Title</span><span class="date">4/8/78</span></br>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut 
+                        laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation 
+                        ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in 
+                        hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero
+                        eros et accumsan</p>
+                        <hr>
+                        <div style="text-align: center;">
+                            <a class="small button" href="#">Show me more</a>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <p class="title" data-section-title><a href="#panel2">Contributions</a></p>
+                    <div class="content" data-section-content>
+                        <p>This will show code and be linked in to github</p>
+                    </div>
+                </section>
+                <section>
+                    <p class="title" data-section-title><a href="#panel2">Activity</a></p>
+                    <div class="content" data-section-content>
+                        <p>A feed listing relevant info about the user such as:</p>
+                        <ul>
+                            <li>Updates to Bilds</li>
+                            <li>New Logs</li>
+                            <li>Achievements</li>
+                            <li>When the user follows another Bild</li>
+                            <li>When teh user likes another Log or Bild</li>
+                            <li>When the user creates a new Log</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

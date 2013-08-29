@@ -4,6 +4,7 @@ from django.template import RequestContext, loader
 from django.shortcuts import render
 from bildloguser.models import *
 from bildcontrols.models import *
+from django.contrib.auth.models import User
 from forms import *
 
 def index(request):
@@ -37,3 +38,12 @@ def createBild(request):
     
 def createLog(request):
     return render(request, 'createlog.html')
+    
+def user_profile(request, username):
+    user = User.objects.filter(username=username) # Get the user (using filter means if there is no user it returns an empty list)
+    if (user):
+        return render(request, 'profile.html')
+    else:
+        return render(request, 'error.html', {
+            'error':"It would seem that the user you are looking for does not exist",
+        })

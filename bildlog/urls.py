@@ -22,5 +22,6 @@ urlpatterns = patterns('',
     url(r'^logout/$', 'bildloguser.views.logout_view', name="logout"),          # The logout page
     url(r'^createBild/$', 'bildcontrols.views.createBild', name="createBild"),  # Bild creation form is here
     url(r'^createLog/$', 'bildcontrols.views.createLog', name="createLog"),     # Log creation form is here
-    url(r'^(?P<username>\S{,30})/$', 'bildloguser.views.view_user_profile', name="view_user_profile"), # View a users profile (usernames have a max length of 30 chars) THIS  NEEDS TO BE AT THE END
+    url(r'^userprofile/$', 'bildloguser.views.user_profile', name="view_user_profile"),    # Demo page for testing the userprofile page
+    url(r'^profile/(?P<username>\S{,30})/$', 'bildcontrols.views.user_profile', name="view_user_profile"), # View a users profile (usernames have a max length of 30 chars) THIS  NEEDS TO BE AT THE END
 )

@@ -60,7 +60,5 @@ def login_view(request):
     
 # View a user's account
 # If the user viewing the page is the user of the page, then link to bildcontrols and user settings
-def view_user_profile(request, username):
-    return render(request, 'userprofile.html', {
-        'username' : username,
-    })
+def user_profile(request):
+    return render(request, 'userprofile.html')
