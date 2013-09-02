@@ -4,6 +4,11 @@ from django.conf import settings
 from taggit.managers import TaggableManager
 from django.contrib.auth.models import User
 
+class Language(models.Model):
+    language                    =           models.CharField(max_length=20, null=False, unique=True) 
+    creation_date               =           models.DateTimeField(auto_now_add = True)
+    last_updated                =           models.DateTimeField(auto_now = True)
+
 class BildLogUser(models.Model):
     user                        =           models.OneToOneField(User)          # The django auth user this profile is tied to
     verified                    =           models.BooleanField(default=0)      # Users must click an email link to verify and post comments
@@ -17,11 +22,6 @@ class BildLogUser(models.Model):
     rep                         =           models.BigIntegerField()            # The users rep
     followers                   =           models.ManyToManyField('self', related_name='follower', symmetrical=False)  # Followers of the user
     following                   =           models.ManyToManyField('self', related_name='followed', symmetrical=False)  # Users the user is following
-    
-class Language(models.Model):
-    language                    =           models.CharField(max_length=20, null=False, unique=True) 
-    creation_date               =           models.DateTimeField(auto_now_add = True)
-    last_updated                =           models.DateTimeField(auto_now = True)
     
 class BildLogUserForm(forms.Form):
     username                    =           forms.CharField(max_length=30, required=True)
