@@ -1,0 +1,14 @@
+{% extends "wrapper.html" %}
+{% block title %} Edit Profile {% endblock %}
+{% block content %}
+<div class="row">
+    <form action="/editprofile/" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+    </form>
+    {% if server_error %}
+        <div class="alert-box alert">{{ server_error }}</div>    
+    {% endif %}
+</div>
+{% endblock %}
