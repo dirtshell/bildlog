@@ -23,8 +23,17 @@ class BildLogUser(models.Model):
     following                   =           models.ManyToManyField('self', related_name='followed', symmetrical=False, null=True)  # Users the user is following
     
 class BildLogUserForm(forms.Form):
-    username                    =           forms.CharField(max_length=30, required=True)
-    email1                      =           forms.EmailField(max_length=150, required=True)
-    email2                      =           forms.EmailField(max_length=150, required=True)
+    username                    =           forms.CharField(label='username', max_length=30, required=True)
+    email1                      =           forms.EmailField(label='Email', max_length=150, required=True)
+    email2                      =           forms.EmailField(label='Email confirmation', max_length=150, required=True)
     password1                   =           forms.CharField(label='Password', widget=forms.PasswordInput(), max_length=30, required=True)
     password2                   =           forms.CharField(label='Password confirmation', widget=forms.PasswordInput(), max_length=30, required=True)
+    
+class BildLogUserProfileForm(forms.Form):
+    personal_site               =           forms.CharField(label='Personal Site', max_length=100)
+    languages                   =           forms.CharField(label='Languages (Comma seperated)', max_length=200)         
+    job                         =           forms.CharField(label='Job', max_length=50)
+    country                     =           forms.CharField(label='Country', max_length=50)
+    github                      =           forms.CharField(label='Github', max_length=50) # May hav improper caps here
+    bitbucket                   =           forms.CharField(label='BitBucket', max_length=50)
+    contact                     =           forms.CharField(label='Contact Email', max_length=100)

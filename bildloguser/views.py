@@ -57,7 +57,42 @@ def login_view(request):
         return render(request, 'index.html', {
             'login_error' : "Login failed",
         })
-    
+
+# Edit your profile
+def edit_profile(request):
+    if not request.user.is_authenticated():
+        return render(request, 'error.html', {
+            'error':"Welp, looks like you gunna have to login to do that."
+        })
+    else:
+        u = request.user
+        user = u.get_profile()
+        if request.method == 'POST':
+            user.personal_site = request.POST['personal_site'].strip()
+            user.job = request.POST['job']
+            user.country = request.POST['country']
+            user.github = request.POST['github']
+            user.bitbucket = request.POST['bitbucket']
+            user.contact = request.POST['contact']
+            
+            languages = request.POST['languages'].split(',')  # Split up the languages and add them
+            for language in languages:
+                if Language.objects.get(language=language) is None: # If the language does not already exist in the database, add it to the database and to the users languages
+                    new_language = Language.objects.create(language=language.strip())
+                    new_language.save()
+                    user.languages.add(new_language)
+                else:   # If the language is already in the database
+                    user.languages.add(Languages.objects.get(language=language.strip()))
+                
+            user.save() # Save the user
+            return render(request, 'profile.html') # Need to add the context
+        else:
+            # Need to populate this with values
+            form = BildLogUserProfileForm()
+            return render(request, 'profileedit.html', {
+                'form': form,
+            })
+
 # View a user's account
 # If the user viewing the page is the user of the page, then link to bildcontrols and user settings
 def user_profile(request):
