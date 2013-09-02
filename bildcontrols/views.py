@@ -5,6 +5,7 @@ from django.shortcuts import render
 from bildloguser.models import *
 from bildcontrols.models import *
 from django.contrib.auth.models import User
+from django.db.models import Count
 from forms import *
 
 def index(request):
@@ -40,20 +41,21 @@ def createLog(request):
     return render(request, 'createlog.html')
     
 def user_profile(request, username):
-    try:
-        u = User.objects.get(username=username)
-        user = u.get_profile()
-        if (user):
-                username = u.username
-                print username
-                rep = user.rep
-                print rep
-                followers_total = user.followers
-                print followers_total
-                following_total = user.following
-                print following_total
-                return render(request, 'profile.html')
-    except:
+    #try:
+    u = User.objects.get(username=username)
+    user = u.get_profile()
+    if (user):
+            username = u.username
+            #print username
+            rep = user.rep
+            #print "Rep: %s" % rep
+            followers_total = user.followers.count()
+            #print "Follower: %s" % followers_total
+            following_total = user.following.count()
+            #print "Following: %s" % following_total
+            return render(request, 'profile.html')
+    #except:
+    else:
         return render(request, 'error.html', {
             'error':"It would seem that the user you are looking for does not exist",
         })
