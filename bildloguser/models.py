@@ -18,8 +18,8 @@ class BildLogUser(models.Model):
     country                     =           models.CharField(max_length=50, null=True)     # The users country
     github                      =           models.CharField(max_length=50, null=True)     # The users github account
     bitbucket                   =           models.CharField(max_length=50, null=True)     # The users bitbucket account
-    contact                     =           models.EmailField(null=True)                 # The email the user would like people to contact him with
-    rep                         =           models.BigIntegerField(null=True)            # The users rep
+    contact                     =           models.EmailField(null=True)        # The email the user would like people to contact him with
+    rep                         =           models.BigIntegerField(default=0, null=True)            # The users rep
     followers                   =           models.ManyToManyField('self', related_name='follower', symmetrical=False, null=True)  # Followers of the user
     following                   =           models.ManyToManyField('self', related_name='followed', symmetrical=False, null=True)  # Users the user is following
     

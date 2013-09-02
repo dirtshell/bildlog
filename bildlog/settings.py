@@ -1,5 +1,5 @@
-# Django settings for bildlog project.
 
+# Django settings for bildlog project.
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -174,3 +174,5 @@ LOGGING = {
         },
     }
 }
+
+AUTH_PROFILE_MODULE = 'bildloguser.BildLogUser'

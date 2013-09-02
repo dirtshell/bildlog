@@ -40,10 +40,20 @@ def createLog(request):
     return render(request, 'createlog.html')
     
 def user_profile(request, username):
-    user = User.objects.filter(username=username) # Get the user (using filter means if there is no user it returns an empty list)
-    if (user):
-        return render(request, 'profile.html')
-    else:
+    try:
+        u = User.objects.get(username=username)
+        user = u.get_profile()
+        if (user):
+                username = u.username
+                print username
+                rep = user.rep
+                print rep
+                followers_total = user.followers
+                print followers_total
+                following_total = user.following
+                print following_total
+                return render(request, 'profile.html')
+    except:
         return render(request, 'error.html', {
             'error':"It would seem that the user you are looking for does not exist",
         })
