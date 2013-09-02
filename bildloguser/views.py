@@ -87,8 +87,24 @@ def edit_profile(request):
             user.save() # Save the user
             return render(request, 'profile.html') # Need to add the context
         else:
-            # Need to populate this with values
-            form = BildLogUserProfileForm()
+            # Flatten the list of languages in to a single string to display in the bound form
+            language_list = [] # Initialize the array so I can add to it
+            languages = user.languages.all()
+            for language in languages:
+                language_list.append(language.language)
+            language_string = ", ".join(language_list)
+            
+            # Fill the form with its values
+            form_data = {
+                'personal_site': user.personal_site,
+                'job': user.job,
+                'country': user.country,
+                'github': user.github,
+                'bitbucket': user.bitbucket,
+                'contact': user.contact,
+                'languages': language_string,
+            }
+            form = BildLogUserProfileForm(form_data)
             return render(request, 'profileedit.html', {
                 'form': form,
             })

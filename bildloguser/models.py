@@ -7,6 +7,10 @@ from django.contrib.auth.models import User
 class Language(models.Model):
     language                    =           models.CharField(max_length=20, null=False, unique=True) 
     creation_date               =           models.DateTimeField(auto_now_add = True)
+    
+    def language_list(self):
+        return ', '.join([l.language for l in self.language.all()])
+    language_list.short_description = "Languages in a list"
 
 class BildLogUser(models.Model):
     user                        =           models.OneToOneField(User)          # The django auth user this profile is tied to
@@ -30,10 +34,10 @@ class BildLogUserForm(forms.Form):
     password2                   =           forms.CharField(label='Password confirmation', widget=forms.PasswordInput(), max_length=30, required=True)
     
 class BildLogUserProfileForm(forms.Form):
-    personal_site               =           forms.CharField(label='Personal Site', max_length=100)
-    languages                   =           forms.CharField(label='Languages (Comma seperated)', max_length=200)         
-    job                         =           forms.CharField(label='Job', max_length=50)
-    country                     =           forms.CharField(label='Country', max_length=50)
-    github                      =           forms.CharField(label='Github', max_length=50) # May hav improper caps here
-    bitbucket                   =           forms.CharField(label='BitBucket', max_length=50)
-    contact                     =           forms.CharField(label='Contact Email', max_length=100)
+    personal_site               =           forms.CharField(label='Personal Site', required=False,max_length=100)
+    languages                   =           forms.CharField(label='Languages (Comma seperated)', required=False, max_length=200)         
+    job                         =           forms.CharField(label='Job', required=False, max_length=50)
+    country                     =           forms.CharField(label='Country', required=False, max_length=50)
+    github                      =           forms.CharField(label='Github', required=False, max_length=50) # May hav improper caps here
+    bitbucket                   =           forms.CharField(label='BitBucket', required=False, max_length=50)
+    contact                     =           forms.CharField(label='Contact Email', required=False, max_length=100)
