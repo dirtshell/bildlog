@@ -16,9 +16,13 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     #url(r'^admin/', include(admin.site.urls)),
     
-    url(r'^$', 'bildcontrols.views.index', name="index"),                    # The index
-    url(r'^signup/$', 'bildloguser.views.signup', name="signup"),            # The signup page
-    url(r'^login/$', 'bildloguser.views.login_view', name="login"),    # The login page
-    url(r'^logout/$', 'bildloguser.views.logout_view', name="logout"),  # The logout page
-    url(r'^user/(?P<username>\S{,30})/$', 'bildloguser.views.view_user_profile', name="view_user_profile"), # View a users profile (usernames have a max length of 30 chars)
+    url(r'^$', 'bildcontrols.views.index', name="index"),                       # The index
+    url(r'^signup/$', 'bildloguser.views.signup', name="signup"),               # The signup page
+    url(r'^login/$', 'bildloguser.views.login_view', name="login"),             # The login page
+    url(r'^logout/$', 'bildloguser.views.logout_view', name="logout"),          # The logout page
+    url(r'^createBild/$', 'bildcontrols.views.createBild', name="createBild"),  # Bild creation form is here
+    url(r'^createLog/$', 'bildcontrols.views.createLog', name="createLog"),     # Log creation form is here
+    url(r'^userprofile/$', 'bildloguser.views.user_profile', name="view_user_profile"),    # Demo page for testing the userprofile page
+    url(r'^editprofile/$', 'bildloguser.views.edit_profile', name="edit_profile"),  # Edit a users profile. Pretty self explanatory
+    url(r'^profile/(?P<username>\S{,30})/$', 'bildcontrols.views.user_profile', name="view_user_profile"), # View a users profile (usernames have a max length of 30 chars) THIS  NEEDS TO BE AT THE END
 )

@@ -10,7 +10,7 @@ class Bild(models.Model):
     title                           =       models.CharField(max_length=100)
     creation_date                   =       models.DateTimeField(auto_now_add = True)
     last_updated                    =       models.DateTimeField(auto_now = True)
-    description                     =       models.CharField(max_length=150)
+    description                     =       models.CharField(max_length=300)
     tags                            =       TaggableManager()
 
 class Log(models.Model):
