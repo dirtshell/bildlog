@@ -7,7 +7,6 @@ from django.contrib.auth.models import User
 class Language(models.Model):
     language                    =           models.CharField(max_length=20, null=False, unique=True) 
     creation_date               =           models.DateTimeField(auto_now_add = True)
-    last_updated                =           models.DateTimeField(auto_now = True)
 
 class BildLogUser(models.Model):
     user                        =           models.OneToOneField(User)          # The django auth user this profile is tied to
