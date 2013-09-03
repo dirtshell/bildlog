@@ -35,19 +35,19 @@
             Sign Up (also mimicked on the bottom page)
                 Takes you to a page where you can sign up with different services
     {% endcomment %}
-    <!-- HEADER BEGINS -->
+    {# HEADER BEGINS #}
     {% if user.is_authenticated %}
         <nav class="top-bar">
             <ul class="title-area">
-                <!-- Title Area -->
+                {# Title Area #}
                 <li class="name">
                     <h1><a href="{% url 'bildcontrols.views.index' %}">Bildlog </a></h1>
                 </li>
-                <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+                {# Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone #}
                 <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
             </ul>
             <section class="top-bar-section">
-                <!-- Right Nav Section -->
+                {# Right Nav Section #}
                 <ul class="right">
                     <li class="has-dropdown"><a href="#">Bilds</a>
                         <ul class="dropdown">
@@ -70,21 +70,21 @@
     {% else %}
         <nav class="top-bar">
             <ul class="title-area">
-                <!-- Title Area -->
+                {# Title Area #}
                 <li class="name">
                     <h1><a href="{% url 'bildcontrols.views.index' %}">Bildlog </a></h1>
                 </li>
-                <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+                {# Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone #}
                 <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
             </ul>
             <section class="top-bar-section">
-               <!-- Left Nav Section -->
+               {# Left Nav Section #}
                 <ul class="left">
                     <li><a href="#">Features</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">FAQ</a></li>
                 </ul>
-                <!-- Right Nav Section -->
+                {# Right Nav Section #}
                 <ul class="right" style="background: #000000;">
                     <a href="#" data-dropdown="drop1" class="button">Login</a>
                     <div id="drop1" class="f-dropdown content small-medium {% if login_error %}open{% endif %}" data-dropdown-content>
@@ -129,21 +129,21 @@
             </section>
         </nav>    
     {% endif %}
-    <!-- HEADER END -->
+    {# HEADER END #}
     
-    <!-- CONTENT -->
+    {# CONTENT -->
     {% block content %}
     
     {% endblock %}
-    <!-- END CONTENT -->
+    {# END CONTENT #}
     
-    <!-- ERECTIN' SCRIPTS HERE! -->
-    <!-- Check for Zepto support, load jQuery if necessary -->
+    {# ERECTIN' SCRIPTS HERE! #}
+    {# Check for Zepto support, load jQuery if necessary #}
     <script>
     document.write('<script src=' +
     ('__proto__' in {} ? '{% static 'js/vendor/zepto.js' %}'  : '{% static 'js/vendor/jquery.js' %}') + '><\/script>')
     </script>
-    <!-- Gotta do this like a plebe cuz the min version doesnt wanna play nice -->
+    {# Gotta do this like a plebe cuz the min version doesnt wanna play nice #}
     <script src="{% static 'js/foundation/foundation.js' %}"></script>
     <script src="{% static 'js/foundation/foundation.alerts.js' %}"></script>
     <script src="{% static 'js/foundation/foundation.clearing.js' %}"></script>
@@ -159,7 +159,7 @@
     <script src="{% static 'js/foundation/foundation.tooltips.js' %}"></script>
     <script src="{% static 'js/foundation/foundation.topbar.js' %}"></script>
     <script src="{% static 'js/foundation/foundation.interchange.js' %}"></script>
-    <!-- ACTIVATE! -->
+    {# ACTIVATE! #}
     <script>
         $(document).foundation();
     </script>
