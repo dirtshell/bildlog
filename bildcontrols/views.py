@@ -44,19 +44,37 @@ def user_profile(request, username):
     try:
         u = User.objects.get(username=username)
         user = u.get_profile()
-        username = u.username
-        #print username
+        language_list = [] # Initialize the array so I can add to it
+        
+		username = u.username
         rep = user.rep
-        #print "Rep: %s" % rep
+		job = user.job
+		country = user.country
+		github = user.github
+		bitbucket = user.bitbucket
+		personal_site = user.personal_site
+		contact = user.contact
+		join_date = user.user.date_joined
         followers_total = user.followers.count()
-        #print "Follower: %s" % followers_total
         following_total = user.following.count()
-        #print "Following: %s" % following_total
-        return render(request, 'profile.html', {
+        languages = user.languages.all()	# Gather all language objects
+        for language in languages:	# Cycle through and add them to the language list
+        		language_list.append(language.language)
+        language_string = ", ".join(language_list) # Convert the language list to a comma seperated string
+		
+		return render(request, 'profile.html', {
             'username':username,
             'rep':rep,
+			'country':country,
             'follower_total':followers_total,
             'following_total':following_total,
+			'languages':language_string,
+			'personal_site':personal_site,
+			'join_date':join_date,
+			'github':github,
+			'bitbucket':bitbucket,
+			'contact':contact,
+			'job':job,
         })
     except:
         return render(request, 'error.html', {
