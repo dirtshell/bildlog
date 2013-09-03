@@ -41,21 +41,24 @@ def createLog(request):
     return render(request, 'createlog.html')
     
 def user_profile(request, username):
-    #try:
-    u = User.objects.get(username=username)
-    user = u.get_profile()
-    if (user):
-            username = u.username
-            #print username
-            rep = user.rep
-            #print "Rep: %s" % rep
-            followers_total = user.followers.count()
-            #print "Follower: %s" % followers_total
-            following_total = user.following.count()
-            #print "Following: %s" % following_total
-            return render(request, 'profile.html')
-    #except:
-    else:
+    try:
+        u = User.objects.get(username=username)
+        user = u.get_profile()
+        username = u.username
+        #print username
+        rep = user.rep
+        #print "Rep: %s" % rep
+        followers_total = user.followers.count()
+        #print "Follower: %s" % followers_total
+        following_total = user.following.count()
+        #print "Following: %s" % following_total
+        return render(request, 'profile.html', {
+            'username':username,
+            'rep':rep,
+            'follower_total':followers_total,
+            'following_total':following_total,
+        })
+    except:
         return render(request, 'error.html', {
-            'error':"It would seem that the user you are looking for does not exist",
+                'error':"It would seem that the user you are looking for does not exist",
         })
