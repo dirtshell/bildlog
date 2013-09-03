@@ -46,15 +46,16 @@ def user_profile(request, username):
         user = u.get_profile()
         language_list = [] # Initialize the array so I can add to it
         
-		username = u.username
+        
+        username = u.username
         rep = user.rep
-		job = user.job
-		country = user.country
-		github = user.github
-		bitbucket = user.bitbucket
-		personal_site = user.personal_site
-		contact = user.contact
-		join_date = user.user.date_joined
+        job = user.job
+        country = user.country
+        github = user.github
+        bitbucket = user.bitbucket
+        personal_site = user.personal_site
+        contact = user.contact
+        join_date = user.user.date_joined
         followers_total = user.followers.count()
         following_total = user.following.count()
         languages = user.languages.all()	# Gather all language objects
@@ -62,7 +63,7 @@ def user_profile(request, username):
         		language_list.append(language.language)
         language_string = ", ".join(language_list) # Convert the language list to a comma seperated string
 		
-		return render(request, 'profile.html', {
+        return render(request, 'profile.html', {
             'username':username,
             'rep':rep,
 			'country':country,
