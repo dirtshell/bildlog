@@ -59,6 +59,7 @@ def user_profile(request, username):
         join_date = user.user.date_joined.date
         followers_total = user.followers.count()
         following_total = user.following.count()
+        print following_total
         languages = user.languages.all()	# Gather all language objects
         for language in languages:	# Cycle through and add them to the language list
         		language_list.append(language.language)
@@ -68,7 +69,7 @@ def user_profile(request, username):
             'username':username,
             'rep':rep,
 			'country':country,
-            'follower_total':followers_total,
+            'followers_total':followers_total,
             'following_total':following_total,
 			'languages':language_string,
 			'personal_site':personal_site,
