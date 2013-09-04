@@ -66,25 +66,28 @@
             <div class="row"> Join Date: {{ join_date }} </div>
             
             <div class="row">
-                <!-- Rep -->
+                {# Rep #}
                 <div class="large-4 columns grid-outline">
                     <span style="display: inline-block; vertical-align: middle; line-height: normal;">{{ rep }}</span>
                 </div>
-                <!-- Followers -->
+                {# Followers #}
                 <div class="large-4 columns grid-outline">
                     <span style="display: inline-block; vertical-align: middle; line-height: normal;">{{ followers_total }}</span>
                 </div>
-                <!-- Following -->
+                {# Following #}
                 <div class="large-4 columns grid-outline">
                     <span style="display: inline-block; vertical-align: middle; line-height: normal;">{{ following_total }}</span>
                 </div>
             </div>
         </div>
-        {% comment %} The body of the user profile, showing their bilds, logs, contributions, and activity {% endcomment %}
+        {# The body of the user profile, showing their bilds, logs, contributions, and activity #}
         <div class="large-9 columns grid-outline">
             <div class="section-container auto" data-section>
                 <section class="active">
+                    {# Loop through the Bild array. Every four bilds, do a new row. #}
+                    {# Each bild in the array should have a link to the bild, the title, and a thumbnail #}
                     <p class="title" data-section-title><a href="#panel1">Bilds</a></p>
+                    {% comment %}
                     <div class="content" data-section-content>
                         <div class="row">
                             <div class="large-3 columns grid-outline">
@@ -129,6 +132,7 @@
                             </div>
                         </div>
                     </div>
+                    {% endcomment %}
                 </section>
                 <section>
                     {# Show them in chronological order for now, linking to the Bild page for the Bild associated with each Log. Allow people to continue reading after the 500 or so words on the actual Logs page #}

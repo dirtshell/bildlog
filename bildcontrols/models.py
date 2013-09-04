@@ -21,5 +21,5 @@ class Log(models.Model):
     last_updated                    =       models.DateTimeField(auto_now = True)
     title                           =       models.CharField(max_length=100)
     body                            =       models.TextField()
-    activated                       =       models.BooleanField(deafult=True)
+    activated                       =       models.BooleanField(default=True)
     tags                            =       TaggableManager()

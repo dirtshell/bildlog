@@ -47,6 +47,7 @@ def user_profile(request, username):
     user = u.get_profile()
     
     if user is not None:
+        # Basic user info for displaying in the left hand pane
         language_list = [] # Initialize the array so I can add to it
         username = u.username
         rep = user.rep
@@ -59,11 +60,14 @@ def user_profile(request, username):
         join_date = user.user.date_joined.date
         followers_total = user.followers.count()
         following_total = user.following.count()
-        print following_total
         languages = user.languages.all()	# Gather all language objects
         for language in languages:	# Cycle through and add them to the language list
         		language_list.append(language.language)
         language_string = ", ".join(language_list) # Convert the language list to a comma seperated string
+		
+		# Assembling the Bild list
+        bilds_list = Bild.objects.filter(owner=user) # Collect a list of the bilds by the user
+        print bilds_list
 		
         return render(request, 'profile.html', {
             'username':username,
@@ -78,6 +82,7 @@ def user_profile(request, username):
 			'bitbucket':bitbucket,
 			'contact':contact,
 			'job':job,
+			'bilds':bilds_list,
         })
     #except:
     else:
