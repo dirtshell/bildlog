@@ -45,13 +45,26 @@
         {% comment %} Sidebar with basic user profile, from top to bottom: image, short description, join date, last active, Rep-followers-following, and pimp section at the bottom {% endcomment %}
         <div class="large-3 columns grid-outline">
             <img src="http://guidesmedia.ign.com/guides/059687/images/blackwhite/pokemans_054.gif"/>
-            <div class="row"> Languages: HTML, CSS, Ruby </div> <!-- This should have the icons instead of the name of the service -->
-            <div class="row"> Contact: dirt@shell.com </div> <!-- This should have the icons instead of the name of the service -->
-            <div class="row"> Country: United States </div> <!-- This should have the icons instead of the name of the service -->
-            <div class="row"> Personal Site: www.dirtshell.com </div> <!-- This should have the icons instead of the name of the service -->
-            <div class="row"> Job: Software Engineer </div> <!-- This should have the icons instead of the name of the service -->
-            <div class="row"> GitHub: dirtshell </div> <!-- This should have the icons instead of the name of the service -->
-            <div class="row"> Join Date: 05/24/1996 </div>
+            {% if languages%} 
+                <div class="row"> Languages: {{ langauges }} </div> <!-- This should have the icons instead of the name of the service -->
+            {% endif %}
+            {% if contact%}
+                <div class="row"> Contact: {{ contact }} </div> <!-- This should have the icons instead of the name of the service -->
+            {% endif %}
+            {% if country %}
+                <div class="row"> Country: {{ country }} </div> <!-- This should have the icons instead of the name of the service -->
+            {% endif %}    
+            {% if personal_site %}
+                <div class="row"> Personal Site: {{ personal_site }} </div> <!-- This should have the icons instead of the name of the service -->
+            {% endif %}
+            {% if job %}
+                <div class="row"> Job: {{ job }} </div> <!-- This should have the icons instead of the name of the service -->
+            {% endif %}
+            {% if github %}
+                <div class="row"> GitHub: {{ github }} </div> <!-- This should have the icons instead of the name of the service -->
+            {% endif %}
+            <div class="row"> Join Date: {{ join_date }} </div>
+            
             <div class="row">
                 <!-- Rep -->
                 <div class="large-4 columns grid-outline">

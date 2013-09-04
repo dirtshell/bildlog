@@ -41,12 +41,13 @@ def createLog(request):
     return render(request, 'createlog.html')
     
 def user_profile(request, username):
-    try:
-        u = User.objects.get(username=username)
-        user = u.get_profile()
+    #try:
+        
+    u = User.objects.get(username=username)
+    user = u.get_profile()
+    
+    if user is not None:
         language_list = [] # Initialize the array so I can add to it
-        
-        
         username = u.username
         rep = user.rep
         job = user.job
@@ -55,7 +56,7 @@ def user_profile(request, username):
         bitbucket = user.bitbucket
         personal_site = user.personal_site
         contact = user.contact
-        join_date = user.user.date_joined
+        join_date = user.user.date_joined.date
         followers_total = user.followers.count()
         following_total = user.following.count()
         languages = user.languages.all()	# Gather all language objects
@@ -77,7 +78,8 @@ def user_profile(request, username):
 			'contact':contact,
 			'job':job,
         })
-    except:
+    #except:
+    else:
         return render(request, 'error.html', {
                 'error':"It would seem that the user you are looking for does not exist",
         })
