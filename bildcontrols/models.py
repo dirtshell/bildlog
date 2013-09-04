@@ -11,6 +11,7 @@ class Bild(models.Model):
     creation_date                   =       models.DateTimeField(auto_now_add = True)
     last_updated                    =       models.DateTimeField(auto_now = True)
     description                     =       models.CharField(max_length=300)
+    activated                       =       models.BooleanField(default=True)
     tags                            =       TaggableManager()
 
 class Log(models.Model):
@@ -20,4 +21,5 @@ class Log(models.Model):
     last_updated                    =       models.DateTimeField(auto_now = True)
     title                           =       models.CharField(max_length=100)
     body                            =       models.TextField()
+    activated                       =       models.BooleanField(deafult=True)
     tags                            =       TaggableManager()
