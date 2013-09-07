@@ -67,7 +67,6 @@ def user_profile(request, username):
 		
 		# Assembling the Bild list
         bilds_list = Bild.objects.filter(owner=user) # Collect a list of the bilds by the user
-        print bilds_list
 		
         return render(request, 'profile.html', {
             'username':username,

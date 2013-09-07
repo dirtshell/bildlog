@@ -87,6 +87,28 @@
                     {# Loop through the Bild array. Every four bilds, do a new row. #}
                     {# Each bild in the array should have a link to the bild, the title, and a thumbnail #}
                     <p class="title" data-section-title><a href="#panel1">Bilds</a></p>
+                    <div class="content" data-section-content>
+                        <div class="row">
+                    {% for bild in bilds %}
+                        <div class="large-3 columns grid-outline">
+                            <img src='http://placehold.it/300x300' alt='Placeholder' />
+                            <h6>{{ bild.title }}</h6>
+                        </div>
+                        {% if forloop.last %} {# if its the last Bild of the list #}
+                            </div>
+                        {% elif forloop.counter|divisibleby:4 %} {# if its the end of a row, close it off #}
+                            </div>
+                            {% if forloop.last != True %} {# if there are still more Bilds in the list, start the next row #}
+                                <div class="row">
+                            {% endif %}
+                        {% endif %}
+                        {% empty %}
+                            <div class="large-1 columns"></div>
+                            <div class="large-10 large-offset-1 columns">
+                                <h4 class="subheader">Looks like this user doesn't have any Bilds yet</h4>
+                            </div>
+                    {% endfor %}
+                        </div>
                     {% comment %}
                     <div class="content" data-section-content>
                         <div class="row">
