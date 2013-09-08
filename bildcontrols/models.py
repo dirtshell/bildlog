@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from bildloguser.models import *
+from django import forms
 from taggit.managers import TaggableManager
 
 # Create your models here.
@@ -23,3 +24,8 @@ class Log(models.Model):
     body                            =       models.TextField()
     activated                       =       models.BooleanField(default=True)
     tags                            =       TaggableManager()
+
+class BildCreationForm(forms.Form):
+    title                           =       forms.CharField(label="Title", max_length=100, required=True)
+    description                     =       forms.CharField(label="Description", max_length=300, required=True)
+    tags                            =       forms.CharField(label="Tags", max_length=100, required=True)

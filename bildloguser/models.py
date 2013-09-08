@@ -38,6 +38,6 @@ class BildLogUserProfileForm(forms.Form):
     languages                   =           forms.CharField(label='Languages (Comma seperated)', required=False, max_length=200)         
     job                         =           forms.CharField(label='Job', required=False, max_length=50)
     country                     =           forms.CharField(label='Country', required=False, max_length=50)
-    github                      =           forms.CharField(label='Github', required=False, max_length=50) # May hav improper caps here
+    github                      =           forms.CharField(label='Github', required=False, max_length=50) # May hav eimproper caps here
     bitbucket                   =           forms.CharField(label='BitBucket', required=False, max_length=50)
     contact                     =           forms.CharField(label='Contact Email', required=False, max_length=100)

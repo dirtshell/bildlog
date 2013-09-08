@@ -6,7 +6,6 @@ from bildloguser.models import *
 from bildcontrols.models import *
 from django.contrib.auth.models import User
 from django.db.models import Count
-from forms import *
 
 def index(request):
     return render(request, 'index.html')
