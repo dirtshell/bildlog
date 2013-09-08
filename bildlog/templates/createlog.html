@@ -1,28 +1,14 @@
 {% extends "wrapper.html" %}
 {% block title %} Create a Bild {% endblock %}
 {% block content %}
-<form>
-    <form method="POST" action="{% url 'createBild' %}">
-        <div class="row">
-            <div class="large-12 columns">
-                <label>Title</label>
-                <input type="text">
-            </div>
-        </div>
-        <div class="row">
-            <div class="large-12 columns">
-                <label>Content</label>
-                <textarea></textarea>
-            </div>
-        </div>
-        <div class="row">
-            <div class="large-8 columns">
-                <label>Tags</label>
-                <input type="text">
-            </div>
-        </div>
-        <div class="row">
-            <input style="margin-left: 15px" type="submit">
-        </div>
+<div class="row">
+    <form action="{% url 'createLog' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
     </form>
+    {% if server_error %}
+        <div class="alert-box alert">{{ server_error }}</div>    
+    {% endif %}
+</div>
 {% endblock %}

@@ -37,7 +37,30 @@ def createBild(request):
     })
     
 def createLog(request):
-    return render(request, 'createlog.html')
+    if request.method == 'POST': # If the form has been submitted...
+        form = LogCreationForm(user=request.user, data=request.POST) # A form bound to the POST data
+        if request.user.is_authenticated(): # A little bit of extra safety
+            if form.is_valid(): # All validation rules pass
+                # Process the data in form.cleaned_data
+                title = form.cleaned_data['title']
+                description = form.cleaned_data['body']
+                tag_string = form.cleaned_data['tags'] # The tags in CSV form
+                bild = form.cleaned_data['bild']    # The Bild the log is tied to
+                
+                # Construct the Log object
+                log = Log.objects.create(title=title, body=body, bild=bild) # Create the log object
+                tags = tag_string.split(',') # Process the tag_string CSV and convert it to a list
+                for tag in tags:
+                    log.tags.add(tag.strip()) # Cycle through the tags, strip them, and add them to the bild
+                log.save() # Finally, save the completed Bild
+                
+                return HttpResponse("HUZZAH YOU CREATED A LOG") # The success page
+    else:
+        form = LogCreationForm(user=request.user) # An unbound (empty) form
+
+    return render(request, 'createlog.html', {
+        'form': form,
+    })
     
 def user_profile(request, username):
     #try:
