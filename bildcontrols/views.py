@@ -43,9 +43,10 @@ def createLog(request):
             if form.is_valid(): # All validation rules pass
                 # Process the data in form.cleaned_data
                 title = form.cleaned_data['title']
-                description = form.cleaned_data['body']
+                body = form.cleaned_data['body']
                 tag_string = form.cleaned_data['tags'] # The tags in CSV form
-                bild = form.cleaned_data['bild']    # The Bild the log is tied to
+                bilds = Bild.objects.filter(owner=User.objects.get(username=request.user))    # The Bild the log is tied to
+                bild = bilds[int(form.cleaned_data['bild'])] # Convert the unicode key to an int and assign it as the Bild
                 
                 # Construct the Log object
                 log = Log.objects.create(title=title, body=body, bild=bild) # Create the log object

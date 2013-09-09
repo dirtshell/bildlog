@@ -16,7 +16,7 @@ class Bild(models.Model):
     tags                            =       TaggableManager()
     
     def __unicode__(self):
-        return u'%s' % title
+        return u'%s' % self.title
 
 class Log(models.Model):
     log_id                          =       models.AutoField(primary_key=True)
@@ -34,11 +34,12 @@ class BildCreationForm(forms.Form):
     tags                            =       forms.CharField(label="Tags", max_length=100, required=True)
     
 class LogCreationForm(forms.Form):
-    bild                            =       forms.ChoiceField(label="Related Bild", choices=[])
+    bild                            =       forms.ChoiceField(label="Related Bild", choices=list(enumerate(['Spring', 'Summer', 'Fall', 'Winter'])), required=True)
     title                           =       forms.CharField(label="Title", max_length=100, required=True)
     body                            =       forms.CharField(label="Body", required=True)
     tags                            =       forms.CharField(label="Tags", max_length=100, required=True)
     
     def __init__(self, user=None, *args, **kwargs):
         super(LogCreationForm, self).__init__(*args, **kwargs)
-        choices = Bild.objects.filter(owner=User.objects.get(username=user))
+        bilds = Bild.objects.filter(owner=User.objects.get(username=user))
+        self.fields['bild'].choices = list(enumerate(bilds))
