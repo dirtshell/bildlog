@@ -42,14 +42,15 @@ def createLog(request):
         if request.user.is_authenticated(): # A little bit of extra safety
             if form.is_valid(): # All validation rules pass
                 # Process the data in form.cleaned_data
+                owner = request.user
                 title = form.cleaned_data['title']
                 body = form.cleaned_data['body']
                 tag_string = form.cleaned_data['tags'] # The tags in CSV form
-                bilds = Bild.objects.filter(owner=User.objects.get(username=request.user))    # The Bild the log is tied to
+                bilds = Bild.objects.filter(owner=User.objects.get(username=owner))    # The Bild the log is tied to
                 bild = bilds[int(form.cleaned_data['bild'])] # Convert the unicode key to an int and assign it as the Bild
                 
                 # Construct the Log object
-                log = Log.objects.create(title=title, body=body, bild=bild) # Create the log object
+                log = Log.objects.create(owner=owner, title=title, body=body, bild=bild) # Create the log object
                 tags = tag_string.split(',') # Process the tag_string CSV and convert it to a list
                 for tag in tags:
                     log.tags.add(tag.strip()) # Cycle through the tags, strip them, and add them to the bild
@@ -90,6 +91,9 @@ def user_profile(request, username):
 		
 		# Assembling the Bild list
         bilds_list = Bild.objects.filter(owner=user) # Collect a list of the bilds by the user
+        
+        # Assembling the Log list
+        logs_list = Log.objects.filter(owner=user) # Collect a list of the logs by the user
 		
         return render(request, 'profile.html', {
             'username':username,
@@ -105,6 +109,7 @@ def user_profile(request, username):
 			'contact':contact,
 			'job':job,
 			'bilds':bilds_list,
+			'logs':logs_list,
         })
     #except:
     else:

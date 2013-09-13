@@ -27,7 +27,7 @@ class BildLogUser(models.Model):
     following                   =           models.ManyToManyField('self', related_name='followed', symmetrical=False, null=True)  # Users the user is following
     
 class BildLogUserForm(forms.Form):
-    username                    =           forms.CharField(label='username', max_length=30, required=True)
+    username                    =           forms.CharField(label='Username', max_length=30, required=True)
     email1                      =           forms.EmailField(label='Email', max_length=150, required=True)
     email2                      =           forms.EmailField(label='Email confirmation', max_length=150, required=True)
     password1                   =           forms.CharField(label='Password', widget=forms.PasswordInput(), max_length=30, required=True)
