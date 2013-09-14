@@ -42,7 +42,7 @@
 {% endcomment %}
 <div class="row">
     <div class="row">
-        {% comment %} Sidebar with basic user profile, from top to bottom: image, short description, join date, last active, Rep-followers-following, and pimp section at the bottom {% endcomment %}
+        {# Sidebar with basic user profile, from top to bottom: image, short description, join date, last active, Rep-followers-following, and pimp section at the bottom #}
         <div class="large-3 columns grid-outline">
             <img src="http://guidesmedia.ign.com/guides/059687/images/blackwhite/pokemans_054.gif"/>
             {% if languages%} 
@@ -83,7 +83,7 @@
         {# The body of the user profile, showing their bilds, logs, contributions, and activity #}
         <div class="large-9 columns grid-outline">
             <div class="section-container auto" data-section>
-                <section class="active">
+                <section {% if active_panel == "bilds" %}class="active"{% endif %}>
                     {# Loop through the Bild array. Every four bilds, do a new row. #}
                     {# Each bild in the array should have a link to the bild, the title, and a thumbnail #}
                     <p class="title" data-section-title><a href="#panel1">Bilds</a></p>
@@ -112,7 +112,7 @@
                     {% endfor %}
                         </div>
                 </section>
-                <section>
+                <section {% if active_panel == "logs" %}class="active"{% endif %}>
                     {# Show them in chronological order for now, linking to the Bild page for the Bild associated with each Log. Allow people to continue reading after the 500 or so words on the actual Logs page #}
                     <p class="title" data-section-title><a href="#panel2">Logs</a></p>
                         <div class="content">
@@ -135,13 +135,13 @@
                         {% endfor %}
                         </div>
                 </section>
-                <section>
-                    <p class="title" data-section-title><a href="#panel2">Contributions</a></p>
+                <section {% if active_panel == "code" %}class="active"{% endif %}>
+                    <p class="title" data-section-title><a href="#panel2">Code</a></p>
                     <div class="content" data-section-content>
                         <p>This will show code and be linked in to github</p>
                     </div>
                 </section>
-                <section>
+                <section {% if active_panel == "activity" %}class="active"{% endif %}>
                     <p class="title" data-section-title><a href="#panel2">Activity</a></p>
                     <div class="content" data-section-content>
                         <p>A feed listing relevant info about the user such as:</p>

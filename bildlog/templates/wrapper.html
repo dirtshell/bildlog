@@ -52,7 +52,7 @@
                     <li><a href="{% url 'createLog' %}">Create a Log</a></li>
                     <li class="has-dropdown"><a href="#">Bilds</a>
                         <ul class="dropdown">
-                            <li><a href="#">My Bilds</a></li>
+                            <li><a href="{% url 'view_profile' user.username "bilds" %}">My Bilds</a></li>
                             <li><a href="#">Bilds I Follow</a></li>
                             <li><a href="{% url 'createBild' %}">Create a Bild</a></li>
                         </ul>

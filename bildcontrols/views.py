@@ -64,8 +64,8 @@ def createLog(request):
         'form': form,
     })
     
-def user_profile(request, username):
-    #try:
+def user_profile(request, username, active=""):
+    #try: # Uncoment this when on development
         
     u = User.objects.get(username=username)
     user = u.get_profile()
@@ -94,6 +94,10 @@ def user_profile(request, username):
         
         # Assembling the Log list
         logs_list = Log.objects.filter(owner=user) # Collect a list of the logs by the user
+        
+        # Determining the panel to show on load
+        while active not in ({"bilds", "activity", "logs", "code"}):
+            active = "bilds" # If not one of the options, show the default Bilds panel
 		
         return render(request, 'profile.html', {
             'username':username,
@@ -110,8 +114,9 @@ def user_profile(request, username):
 			'job':job,
 			'bilds':bilds_list,
 			'logs':logs_list,
+			'active_panel':active,  # The panel that the page shows on load, defaults to Bilds
         })
-    #except:
+    #except:    # Uncomment this when on development
     else:
         return render(request, 'error.html', {
                 'error':"It would seem that the user you are looking for does not exist",
