@@ -26,4 +26,5 @@ urlpatterns = patterns('',
     url(r'^editprofile/$', 'bildloguser.views.edit_profile', name="edit_profile"),  # Edit a users profile. Pretty self explanatory
     url(r'^profile/(?P<username>\w{,30})/$', 'bildcontrols.views.user_profile', name="view_profile"), # View a users profile (usernames have a max length of 30 chars) THIS  NEEDS TO BE AT THE END
     url(r'^profile/(?P<username>\w{,30})/(?P<active>\w{,10})/$', 'bildcontrols.views.user_profile', name="view_profile"), # View a users profile and set the active panel THIS  NEEDS TO BE AT THE END
+    url(r'^(?P<username>\w{,30})/(?P<bild_name>\w{,100})/$', 'bildcontrols.views.bild', name="view_bild"),  # View a specific Bild
 )

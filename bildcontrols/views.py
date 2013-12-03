@@ -65,12 +65,12 @@ def createLog(request):
     })
     
 def user_profile(request, username, active=""):
-    #try: # Uncoment this when on development
+    #try: # Uncoment this when on deploy
         
     u = User.objects.get(username=username)
     user = u.get_profile()
     
-    if user is not None:
+    if user is not None: #  Comment on deploy
         # Basic user info for displaying in the left hand pane
         language_list = [] # Initialize the array so I can add to it
         username = u.username
@@ -116,8 +116,11 @@ def user_profile(request, username, active=""):
 			'logs':logs_list,
 			'active_panel':active,  # The panel that the page shows on load, defaults to Bilds
         })
-    #except:    # Uncomment this when on development
-    else:
+    #except:    # Uncomment this when on deploy
+    else:   # Comment this on deploy
         return render(request, 'error.html', {
                 'error':"It would seem that the user you are looking for does not exist",
         })
+        
+def bild(request, username, bild_name):
+    return render(request, 'bild.html')
